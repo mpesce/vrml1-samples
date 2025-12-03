@@ -1,0 +1,91 @@
+#VRML V1.0 ascii
+
+Separator {
+
+    # --- Camera ---
+    # Adjusted to look slightly down at the text and cake
+    PerspectiveCamera {
+        position    0 3.5 10
+        orientation 1 0 0 -0.2
+        focalDistance 10
+    }
+    
+    PointLight {
+        location 5 8 8
+        color 1 1 1
+    }
+
+    # --- The Cake Base (Round and Blue) ---
+    Separator {
+        Material {
+            diffuseColor 0.1 0.1 0.8   # Deep Blue
+            shininess 0.5
+        }
+        Cylinder {
+            radius 2.0
+            height 1.5
+        }
+    }
+
+    # --- The Candle (Red) ---
+    Separator {
+        Translation {
+            translation 0 1.25 0
+        }
+        Material {
+            diffuseColor 1.0 0.0 0.0   # Red
+        }
+        Cylinder {
+            radius 0.15
+            height 1.0
+        }
+    }
+
+    # --- The "Teardrop" Flame ---
+    Separator {
+        Material {
+            diffuseColor 1.0 0.9 0.0   # Yellow-Orange
+            emissiveColor 1.0 0.5 0.0  # Glowing
+        }
+        
+        # Flame Base
+        Separator {
+            Translation { translation 0 1.85 0 }
+            Sphere { radius 0.16 }
+        }
+
+        # Flame Tip
+        Separator {
+            Translation { translation 0 1.95 0 }
+            Cone {
+                bottomRadius 0.15
+                height 0.6
+            }
+        }
+    }
+
+    # --- The Text (Scaled Down) ---
+    Separator {
+        # 1. Move the origin up above the flame
+        Translation {
+            translation 0 3.8 0  
+        }
+        
+        # 2. Scale the coordinate system down 
+        # (This makes the text smaller, roughly 1 unit high effectively)
+        Scale {
+            scaleFactor 0.1 0.1 0.1
+        }
+
+        Material {
+            diffuseColor 0.2 1.0 0.2   # Retro Bright Green
+        }
+
+        AsciiText {
+            string [ "HAPPY", "BIRTHDAY" ]
+            justification CENTER
+            width 0   # 0 = Use default font proportions (prevents stretching)
+            spacing 1.5
+        }
+    }
+}
