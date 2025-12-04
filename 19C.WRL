@@ -1,0 +1,19 @@
+#VRML V1.0 ascii
+
+# Example nineteen - using the LOD level-of-detail node
+# Doesn't really do anything practical, but demonstrates LOD
+
+
+		# If further away than 100 units, the Sun is a white Cube
+		DEF FarAway Separator {
+
+			# The sun is white, isn't it?
+			Material {
+				emissiveColor 1 1 1    	# MFColor
+			}
+			Cube {
+				width 10		# Cube Sun
+				height 10
+				depth 10
+			}
+		}

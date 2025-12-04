@@ -1,0 +1,53 @@
+#VRML V1.0 ascii
+
+# Example Twenty-Three - A Cube defined with Coordinate3 and IndexedFaceSet
+
+	# Just like the name says, a green cube.
+	DEF Cube_Green Separator {
+
+		# It's a nice bright green cube
+		Material {
+			diffuseColor 0.000000 1.000000 0.000000
+			ambientColor 0.000000 0.100000 0.000000
+		}
+
+		# The Coordinate3 node gives a list of points.
+		# A cube has eight points.
+		# Here they are.
+		Coordinate3 {
+			point [
+				1.0 -1.0 1.0,  # Point Zero
+				1.0 -1.0 -1.0, # Point One
+				-1.0 -1.0 -1.0, # Point Two
+				-1.0 -1.0 1.0, # etc.
+				1.0 1.0 -1.0,
+				-1.0 1.0 -1.0,
+				-1.0 1.0 1.0,
+				1.0 1.0 1.0
+			]
+		}
+
+		# Each line defines a triangular polygon,
+		# By referencing points in the Coordinate3 node.
+		# A cube has six faces.
+		# But each face has two triangular polygons
+		# So here's twelve polygons which define the cube.
+		IndexedFaceSet {
+			coordIndex [
+				2, 1, 0, -1, # Polygon composed of Point 2, Point 1, Point 0
+				2, 0, 3, -1, # Polygon composed of Point 2, Point 0, Point 3
+				4, 1, 2, -1, # etc.
+				4, 2, 5, -1,
+				5, 2, 3, -1,
+				5, 3, 6, -1,
+				6, 3, 0, -1,
+				6, 0, 7, -1,
+				4, 5, 6, -1,
+				4, 6, 7, -1,
+				1, 4, 7, -1,
+				1, 7, 0, -1
+			]
+		}
+	}
+
+

@@ -1,0 +1,52 @@
+#VRML V1.0 ascii
+
+# Example nineteen - using the LOD level-of-detail node
+# Doesn't really do anything practical, but demonstrates LOD
+
+DEF LOD_EXAMPLE Separator {
+
+	# This is a simple example
+	# The LOD node groups everything within it together
+	DEF LOD_NODE LOD  {
+		range [ 50,100 ]
+
+		# If closer than 50 units, the Sun is yellow
+		DEF CloseIn Separator {
+
+			# The sun is yellow, isn't it?
+			Material {
+				emissiveColor 1 1 0    	# MFColor
+			}
+			Sphere {
+				radius 10		# Big Sun
+			}
+		}
+
+		# If closer than 100 units, but greater than 50 units, the Sun is a magenta Cone
+		DEF Medium Separator {
+
+			# The sun is magenta, isn't it?
+			Material {
+				emissiveColor 1 0 1    	# MFColor
+			}
+			Cone {
+				bottomRadius 10	# Conical Sun
+				height 10
+			}
+		}
+
+		# If further away than 100 units, the Sun is a white Cube
+		DEF FarAway Separator {
+
+			# The sun is white, isn't it?
+			Material {
+				emissiveColor 1 1 1    	# MFColor
+			}
+			Cube {
+				width 10		# Cube Sun
+				height 10
+				depth 10
+			}
+		}
+	}
+}

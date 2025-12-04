@@ -1,0 +1,92 @@
+#VRML V1.0 ascii
+
+# Example eleven - create a link from the Moon to an audio file
+
+# Here comes the Sun
+# The Separator node groups everything within it together
+Separator {
+
+	# The material will effect all subsequent nodes
+	# The sun is yellow, isn't it?  Additive color means red + green = yellow
+	# We're switching to emissive color because the Sun gives off light.
+	Material {
+		emissiveColor 1 1 0    	# The Sun emits lots of yellow light
+	}
+
+	# The WWWAnchor node is a group node
+	# This means that all objects within it are linked with the anchor's URL
+	# We want to link the Sun, so the Sun's Sphere node goes inside of it.
+	# Using the description field, we provide context for the user
+	WWWAnchor {
+		name "http://www.w3.org/" # The root URL of the World Wide Web
+		description "A link from the Sun to W3.ORG" # Decriptive text
+
+		# Inside the anchor, because WWWAnchor is a group node
+		Sphere {
+			radius 10		# Big Sun
+		}
+	}
+
+	# We place the Earth within it's own Separator
+	# To keep everything good and isolated
+	Separator {
+
+		# Let's move things out of the way here
+		Transform {
+			translation 0 20 20
+		}
+
+		# Color the Earth blue, and make it absorb light
+		# But also make it a reflective, like water
+		Material {
+			diffuseColor 0 0 1 # Big blue marble
+			shininess 0.9 # Water is rather shiny
+		}
+
+		# The WWWAnchor node is a group node
+		# This means that all objects within it are linked with the anchor's URL
+		# We want to link the Earth, so the Earth's Sphere node goes inside of it.
+		# Using the description field, we provide context for the user
+		WWWAnchor {
+			name "http://hyperreal.com/~mpesce/book/examples/second.wrl" # Another world
+			description "A link to another world" # Decriptive text
+
+			# Finally, create the earth
+			Sphere {
+				radius 2	# Little Earth
+			}
+		}
+
+		# The Moon gets its own Separator
+		# Because we really do keep everything separate
+		Separator {
+
+			# The Moon is just outside the Earth
+			Transform {
+				translation 4 4 0
+			}
+
+			# Color the Moon grey, make it absorb light
+			# It's a little shiny, but not much
+			Material {
+				diffuseColor 0.7 0.7 0.7
+				shininess 0.3
+			}
+
+			# The WWWAnchor node is a group node
+			# This means that all objects within it are linked with the anchor's URL
+			# We want to link the Moon, so the Moon's Sphere node goes inside of it.
+			# Using the description field, we provide context for the user
+			WWWAnchor {
+				name "http://www.cyborganic.com:80/People/paul/The_new_dogs/pescewrd.au"
+				description "Sounds from a talk about VRML"
+
+				# And now, create the Moon
+				Sphere {
+					radius 1	# Tiny Moon
+				}
+			}
+		}
+	}
+}
+

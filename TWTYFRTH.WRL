@@ -1,0 +1,63 @@
+#VRML V1.0 ascii
+
+# Example Twenty-Four - A Cube that gets USEd and abused.
+
+	# The name of this cube is important for the USE node
+	DEF Cube_Green Separator {
+
+		# It's a nice bright green cube
+		Material {
+			diffuseColor 0.000000 1.000000 0.000000
+			ambientColor 0.000000 0.100000 0.000000
+		}
+
+		# Canonically, a cube has eight points.
+		# Here they are.
+		Coordinate3 {
+			point [
+				1.0 -1.0 1.0,
+				1.0 -1.0 -1.0,
+				-1.0 -1.0 -1.0,
+				-1.0 -1.0 1.0,
+				1.0 1.0 -1.0,
+				-1.0 1.0 -1.0,
+				-1.0 1.0 1.0,
+				1.0 1.0 1.0
+			]
+		}
+
+		# A cube has six faces.
+		# But each face has two triangular polygons
+		# So here's twelve polygons which define the cube.
+		IndexedFaceSet {
+			coordIndex [
+				2, 1, 0, -1,
+				2, 0, 3, -1,
+				4, 1, 2, -1,
+				4, 2, 5, -1,
+				5, 2, 3, -1,
+				5, 3, 6, -1,
+				6, 3, 0, -1,
+				6, 0, 7, -1,
+				4, 5, 6, -1,
+				4, 6, 7, -1,
+				1, 4, 7, -1,
+				1, 7, 0, -1
+			]
+		}
+	}
+
+                 Translation {
+		 translation 3 3 3 
+	}
+
+	USE Cube_Green
+
+                 Translation {
+		 translation 4 4 4 
+	}
+
+	USE Cube_Green
+
+
+

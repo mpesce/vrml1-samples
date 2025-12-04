@@ -1,0 +1,123 @@
+#VRML V1.0 ascii
+
+# Example twenty-two - We texture map the Earth with its surface, using a URL
+
+# Here comes the Sun
+# The Separator node groups everything within it together
+DEF SOLAR_SYSTEM Separator {
+
+	# The material will effect all subsequent nodes
+	# The sun is yellow, isn't it?  Additive color means red + green = yellow
+	# We're switching to emissive color because the Sun gives off light.
+	Material {
+		emissiveColor 1 1 0    	# The Sun emits lots of yellow light
+	}
+
+	# We'll make the Sun shine here
+	# A PointLight shines equally in all directions, like the Sun does.
+	DEF SUNLIGHT PointLight {
+		intensity 1	    # The Sun is way bright
+		color 1 1 0.9   # Sunlight is basically white, even though the Sun is yellow.
+	}
+
+	# The WWWAnchor node is a group node
+	# This means that all objects within it are linked with the anchor's URL
+	# We want to link the Sun, so the Sun's Sphere node goes inside of it.
+	# Using the description field, we provide context for the user
+	# The DEF node attaches the name "SUN" to the WWWAnchor group
+	DEF SUN WWWAnchor {
+		name "http://www.w3.org/" # The root URL of the World Wide Web
+		description "A link from the Sun to W3.ORG" # Decriptive text
+
+		Sphere {
+			radius 10
+		}
+	}
+
+	# We place the Earth within it's own Separator
+	# To keep everything good and isolated
+	Separator {
+
+		# Let's move things out of the way here
+		Transform {
+			translation 0 20 20
+		}
+
+		# Color the Earth blue, and make it absorb light
+		# But also make it a reflective, like water
+		DEF EARTH_MATERIAL Material {
+			diffuseColor 0 0 1 # Big blue marble
+			specularColor 0.9 0.9 0.9 # And a little more shiny
+			shininess 0.9 # Water is rather shiny
+		}
+
+		# Here's where we specify the texture map
+		# Instead of a local RGB file, we access one across the Web
+		Texture2 {
+			filename "http://hyperreal.com/~mpesce/WORLDMAP.RGB"
+		}
+
+		# The WWWAnchor node is a group node
+		# This means that all objects within it are linked with the anchor's URL
+		# We want to link the Earth, so the Earth's Sphere node goes inside of it.
+		# Using the description field, we provide context for the user
+		# The DEF node attaches the name "Earth" to the WWWAnchor node
+		DEF EARTH WWWAnchor {
+			name "http://hyperreal.com/~mpesce/book/examples/second.wrl" # Another world
+			description "A link to another world" # Decriptive text
+
+			# Finally, create the earth
+			Sphere {
+				radius 2	# Little Earth
+			}
+		}
+
+		# The Moon gets its own Separator
+		# Because we really do keep everything separate
+		Separator {
+
+			# The Moon is just outside the Earth
+			Transform {
+				translation 4 4 0
+			}
+
+			# Color the Moon grey, make it absorb light
+			# It's a little shiny, but not much
+			Material {
+				diffuseColor 0.7 0.7 0.7
+				shininess 0.3
+			}
+
+			# This is a sample texture map
+			# Just to show how it all works.
+			# Using it, you'll get a 2 x 4 image
+			# It's in black/gray/white to make it look like a faux lunar surface
+			Texture2 {
+				# Define a 4 x 4 pixel texture map using RGB values
+				image 4 4 3 
+
+				# Here's the map, from lower left to upper right
+				0xC0C0C0 0x808080 0xFFFFFF 0x404040 # Bottom row
+				0x808080 0x202020 0x808080 0xC0C0C0 # Lower Middle Row
+				0x202020 0x808080 0xFFFFFF 0x808080 # Upper Middle Row
+				0x808080 0xC0C0C0 0x808080 0x202020 # Upper Row
+			}
+
+			# The WWWAnchor node is a group node
+			# This means that all objects within it are linked with the anchor's URL
+			# We want to link the Moon, so the Moon's Sphere node goes inside of it.
+			# Using the description field, we provide context for the user
+			# The DEF node attaches the name "Moon" to the WWWAnchor node
+			DEF Moon WWWAnchor {
+				name "http://www.cyborganic.com:80/People/paul/The_new_dogs/pescewrd.au"
+				description "Sounds from a talk about VRML"
+
+				# And now, create the Moon
+				Sphere {
+					radius 1	# Tiny Moon
+				}
+			}
+		}
+	}
+}
+

@@ -1,0 +1,17 @@
+#VRML V1.0 ascii
+
+# Example nineteen - using the LOD level-of-detail node
+# Doesn't really do anything practical, but demonstrates LOD
+
+		# If closer than 50 units, the Sun is yellow
+		DEF CloseIn Separator {
+
+			# The sun is yellow, isn't it?
+			Material {
+				emissiveColor 1 1 0    	# MFColor
+			}
+			Sphere {
+				radius 10		# Big Sun
+			}
+		}
+

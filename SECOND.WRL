@@ -1,0 +1,8 @@
+#VRML V1.0 ascii
+
+# Example two - Using a VRML built-in shape to create a simple world
+
+# Here comes the Sun
+Sphere {
+	radius 10		# The Sun is pretty big
+}

@@ -1,0 +1,18 @@
+#VRML V1.0 ascii
+
+# Example nineteen - using the LOD level-of-detail node
+# Doesn't really do anything practical, but demonstrates LOD
+
+
+		# If closer than 100 units, but greater than 50 units, the Sun is a magenta Cone
+		DEF Medium Separator {
+
+			# The sun is magenta, isn't it?
+			Material {
+				emissiveColor 1 0 1    	# MFColor
+			}
+			Cone {
+				bottomRadius 10	# Conical Sun
+				height 10
+			}
+		}

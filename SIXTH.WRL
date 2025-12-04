@@ -1,0 +1,42 @@
+#VRML V1.0 ascii
+
+# Example six - a shiny Earth
+
+# Here comes the Sun
+# The Separator node groups everything within it together
+Separator {
+
+	# The material will effect all subsequent nodes
+	# The sun is yellow, isn't it?  Additive color means red + green = yellow
+	# We're switching to emissive color because the Sun gives off light.
+	Material {
+		emissiveColor 1 1 0    	# The Sun emits lots of yellow light
+	}
+
+	Sphere {
+		radius 10		# Big Sun
+	}
+
+	# We place the Earth within it's own Separator
+	# To keep everything good and isolated
+	Separator {
+
+		# Let's move things out of the way here
+		Transform {
+			translation 0 20 20
+		}
+
+		# Color the Earth blue, and make it absorb light
+		# But also make it a reflective, like water
+		Material {
+			diffuseColor 0 0 1 # Big blue marble
+			shininess 0.9 # Water is rather shiny
+		}
+
+		# Finally, create the earth
+		Sphere {
+			radius 2	# Little Earth
+		}
+	}
+}
+

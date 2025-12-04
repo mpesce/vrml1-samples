@@ -1,0 +1,20 @@
+#VRML V1.0 ascii
+
+# Example four - using emissive colors
+
+# Here comes the Sun
+# The Separator node groups everything within it together
+Separator {
+
+	# The material will effect all subsequent nodes
+	# The sun is yellow, isn't it?  Additive color means red + green = yellow
+	# We're switching to emissive color because the Sun gives off light.
+	Material {
+		emissiveColor 1 1 0    	# The Sun emits lots of yellow light
+	}
+
+	Sphere {
+		radius 10		# Big Sun
+	}
+}
+
